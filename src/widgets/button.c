@@ -251,6 +251,8 @@ widget_t* button_create(widget_t* parent, xy_t x, xy_t y, wh_t w, wh_t h) {
   button->timer_id = TK_INVALID_ID;
   button->long_press_time = TK_LONG_PRESS_TIME;
 
+  widget->focusable = TRUE;
+
   return widget;
 }
 

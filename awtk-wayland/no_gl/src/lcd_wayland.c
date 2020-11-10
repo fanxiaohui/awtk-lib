@@ -57,14 +57,18 @@ static ret_t input_dispatch_to_main_loop(void* ctx, const event_queue_req_t* e) 
 extern int32_t map_key(uint8_t code);
 static void key_input_dispatch(int state,int key)
 {
-	event_queue_req_t req;
+//	event_queue_req_t req;
+	key_event_t event;
+	widget_t* widget = main_loop()->wm;
 
-    req.event.type = (state == WL_KEYBOARD_KEY_STATE_PRESSED) ? EVT_KEY_DOWN : EVT_KEY_UP;
-    req.key_event.key = map_key(key);
+    int type = (state == WL_KEYBOARD_KEY_STATE_PRESSED) ? EVT_KEY_DOWN : EVT_KEY_UP;
+	key_event_init(&event, type, NULL, map_key(key));
 
-    input_dispatch_to_main_loop(main_loop(), &(req));
+//    req.key_event.key = map_key(key);
 
-    req.event.type = EVT_NONE;
+    input_dispatch_to_main_loop(main_loop(), &(event));
+
+//    event.event.type = EVT_NONE;
 
     if(state == WL_KEYBOARD_KEY_STATE_PRESSED){
     	__repeat_state = repeat_key_pressed;
