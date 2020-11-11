@@ -175,7 +175,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -353,7 +353,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="app|src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|app|src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

@@ -882,7 +882,7 @@ typedef enum _key_code_t {
 } key_code_t;
 
 #ifndef TK_KEY_CLOSE_INPUT_METHOD
-#define TK_KEY_CLOSE_INPUT_METHOD TK_KEY_F7
+#define TK_KEY_CLOSE_INPUT_METHOD TK_KEY_ESCAPE
 #endif /*TK_KEY_CLOSE_INPUT_METHOD*/
 
 #ifndef TK_KEY_OPEN_INPUT_METHOD
