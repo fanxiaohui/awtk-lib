@@ -510,6 +510,8 @@ struct _widget_t {
   const widget_vtable_t* vt;
   /*private*/
   assets_manager_t* assets_manager;
+
+  void *args;
 };
 
 /**
