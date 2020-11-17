@@ -558,15 +558,15 @@ static ret_t window_manager_paint_normal(widget_t* widget, canvas_t* c) {
   uint32_t number = 0;
 #endif
 
-  uint64_t start_time = time_now_ms();
   window_manager_default_t* wm = WINDOW_MANAGER_DEFAULT(widget);
-
+  uint64_t start_time = time_now_ms();
   window_manager_default_inc_fps(widget);
 
   if (WINDOW_MANAGER(wm)->show_fps) {
     rect_t fps_rect = rect_init(0, 0, 60, 30);
     window_manager_default_invalidate(widget, &fps_rect);
   }
+
 #ifdef FRAGMENT_FRAME_BUFFER_SIZE
   if (wm->native_window->dirty_rect.w > 0 && wm->native_window->dirty_rect.h > 0) {
     rect_t r = native_window_calc_dirty_rect(wm->native_window);
@@ -606,6 +606,7 @@ static ret_t window_manager_paint_normal(widget_t* widget, canvas_t* c) {
     native_window_end_frame(wm->native_window);
   }
 #endif
+
   wm->last_paint_cost = time_now_ms() - start_time;
 
   return RET_OK;
@@ -770,6 +771,7 @@ static ret_t window_manager_default_paint(widget_t* widget) {
 #else
   ret = window_manager_paint_normal(widget, c);
 #endif /*WITH_WINDOW_ANIMATORS*/
+
   return ret;
 }
 

@@ -49,7 +49,7 @@ static void PlatformPollEvents(struct wayland_data *objs)
     while (wl_display_prepare_read(display) != 0)
         wl_display_dispatch_pending(display);
     wl_display_flush(display);
-    if (poll(fds, 1, 50) > 0)
+    if (poll(fds, 1, 10) > 0)
     {
         wl_display_read_events(display);
         wl_display_dispatch_pending(display);
