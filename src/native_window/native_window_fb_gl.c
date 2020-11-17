@@ -167,7 +167,7 @@ static native_window_t* native_window_create_internal(uint32_t w, uint32_t h, fl
   return win;
 }
 
-native_window_t* _native_window_create(widget_t* widget) {
+native_window_t* native_window_create(widget_t* widget) {
   native_window_t* nw = s_shared_win;
   return_value_if_fail(nw != NULL, NULL);
 

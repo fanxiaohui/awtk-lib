@@ -23,6 +23,12 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <linux/input.h>
+#include "wayland_tools.h"
+#include "base/idle.h"
+#include "base/timer.h"
+#include "base/window_manager.h"
+#include "main_loop/main_loop_simple.h"
+#include "tkc/thread.h"
 #include "tkc/mem.h"
 #include "base/keys.h"
 #include "tkc/thread.h"
@@ -114,4 +120,66 @@ static const int32_t s_key_map[0x100] = {[KEY_1] = TK_KEY_1,
 
 int32_t map_key(uint8_t code) {
   return s_key_map[code];
+}
+
+static ret_t input_dispatch_to_main_loop(void* ctx, const event_queue_req_t* e) {
+	main_loop_queue_event((main_loop_t*)ctx, e);
+	return RET_OK;
+}
+
+static void key_input_dispatch(int state,int key)
+{
+//	event_queue_req_t req;
+	key_event_t event;
+	widget_t* widget = main_loop()->wm;
+
+    int type = (state == WL_KEYBOARD_KEY_STATE_PRESSED) ? EVT_KEY_DOWN : EVT_KEY_UP;
+	key_event_init(&event, type, NULL, map_key(key));
+
+
+    input_dispatch_to_main_loop(main_loop(), &(event));
+
+}
+
+static void mouse_point_dispatch(int state,int button, int x,int y)
+{
+	pointer_event_t event;
+	widget_t* widget = main_loop()->wm;
+	static int __x,__y;
+	static int pressed = 0;
+
+	if(x > 0){
+		__x = x;
+	}
+
+	if(y > 0){
+		__y = y;
+	}
+
+	switch(state){
+		case WL_POINTER_BUTTON_STATE_PRESSED:
+			pointer_event_init(&event, EVT_POINTER_DOWN, widget, __x, __y);
+			event.button = button;
+			event.pressed = pressed = 1;
+			break;
+		case WL_POINTER_BUTTON_STATE_RELEASED:
+			pointer_event_init(&event, EVT_POINTER_UP, widget, __x, __y);
+			event.button = button;
+			event.pressed = pressed = 0;
+			break;
+		default:
+			pointer_event_init(&event, EVT_POINTER_MOVE, widget, __x, __y);
+			event.button = button;
+			event.pressed = pressed;
+			break;
+	}
+
+    input_dispatch_to_main_loop(main_loop(), (event_queue_req_t *)&event);
+}
+
+void setup_input_cb(struct input_bundle *input)
+{
+	input->keyboard.kb_xcb = key_input_dispatch;
+	input->mouse.point_xcb = mouse_point_dispatch;
+	input->touch.point_xcb = mouse_point_dispatch;
 }

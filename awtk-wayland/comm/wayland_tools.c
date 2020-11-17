@@ -1,7 +1,7 @@
 /*
  * wayland_tools.c
  *
- *  Created on: 2019Äê9ÔÂ23ÈÕ
+ *  Created on: 2019ï¿½ï¿½9ï¿½ï¿½23ï¿½ï¿½
  *      Author: zjm09
  */
 #include "wayland_tools.h"
@@ -100,8 +100,8 @@ static const struct wl_seat_listener seat_listener = {
 static void global_registry_handler(void *data, struct wl_registry *registry,
 		uint32_t id, const char *interface, uint32_t version) {
 	struct wayland_data *objs = data;
-//	printf("Got a registry event for %s id %d version %d \n", interface, id,
-//			version);
+	printf("Got a registry event for %s id %d version %d \n", interface, id,
+			version);
 	if (strcmp(interface, wl_compositor_interface.name) == 0) {
 		objs->compositor = wl_registry_bind(registry, id,
 				&wl_compositor_interface, 4);
@@ -148,8 +148,6 @@ static const struct zxdg_toplevel_v6_listener xdg_top_listener = {
 		do_nothing
 };
 
-#define RETURN_WITH(s)	{printf("return with " #s "\n");return s;}
-
 WAYLAND_SETUP_ERR setup_wayland(struct wayland_data *objs, int fullscreen) {
 	memset(objs, 0, sizeof(struct wayland_data));
 	objs->monitors = malloc(sizeof(struct wl_list));
@@ -159,40 +157,40 @@ WAYLAND_SETUP_ERR setup_wayland(struct wayland_data *objs, int fullscreen) {
 	objs->inputs.keyboard.ctx = xkb_context_new(XKB_CONTEXT_NO_FLAGS);
 
 
-	objs->display = wl_display_connect("wayland-0");
+	objs->display = wl_display_connect(NULL);
 	if (objs->display == NULL)
-		RETURN_WITH (NO_WAY_DISP);
+		return NO_WAY_DISP;
 
 	objs->registry = wl_display_get_registry(objs->display);
 	if (objs->registry == NULL)
-		RETURN_WITH (NO_REG);
+		return NO_REG;
 	wl_registry_add_listener(objs->registry, &registry_listener, objs);
 	wl_display_roundtrip(objs->display); // Wait for registry listener to run
 	if (objs->compositor == NULL)
-		RETURN_WITH (NO_COMP);
+		return NO_COMP;
 	if (objs->shell == NULL)
-		RETURN_WITH (NO_SHELL);
+		return NO_SHELL;
 	if (objs->inputs.seat == NULL)
-		RETURN_WITH (NO_SEAT);
+		return NO_SEAT;
 	if (objs->shm == NULL)
-		RETURN_WITH (NO_SHM);
+		return NO_SHM;
 	objs->inputs.mouse.cursor_theme = wl_cursor_theme_load(NULL, 1, objs->shm);
 	if (wl_list_empty(objs->monitors))
-		RETURN_WITH (NO_MONITORS);
+		return NO_MONITORS;
 	if (objs->surface == NULL)
-		RETURN_WITH (NO_SURFACE);
+		return NO_SURFACE;
 
 	objs->shell_surface = zxdg_shell_v6_get_xdg_surface(objs->shell,
 			objs->surface);
 	if (objs->shell_surface == NULL)
-		RETURN_WITH (NO_SHELL_SURFACE);
+		return NO_SHELL_SURFACE;
 
 	zxdg_surface_v6_add_listener(objs->shell_surface, &xdg_surface_listener,
 	NULL);
 
 	objs->top = zxdg_surface_v6_get_toplevel(objs->shell_surface);
 	if (objs->top == NULL)
-		RETURN_WITH (NO_TOPLEVEL);
+		return NO_TOPLEVEL;
 
 	if (fullscreen) {
 		zxdg_toplevel_v6_set_maximized(objs->top);
@@ -228,79 +226,23 @@ void destroy_wayland_data(struct wayland_data *objs) {
 	xkb_keymap_unref(objs->inputs.keyboard.map);
 	xkb_state_unref(objs->inputs.keyboard.kb_state);
 	xkb_context_unref(objs->inputs.keyboard.ctx);
-	if(objs->inputs.keyboard.kbd)
-		wl_keyboard_destroy(objs->inputs.keyboard.kbd);
-	if(objs->inputs.mouse.pointer)
-		wl_pointer_destroy(objs->inputs.mouse.pointer);
-	if(objs->inputs.seat)
-		wl_seat_destroy(objs->inputs.seat);
-	if(objs->shm)
-		wl_shm_destroy(objs->shm);
-	if(objs->top)
-		zxdg_toplevel_v6_destroy(objs->top);
-	if(objs->shell_surface)
-		zxdg_surface_v6_destroy(objs->shell_surface);
-	if(objs->shell)
-		zxdg_shell_v6_destroy(objs->shell);
-	if(objs->surface)
-		wl_surface_destroy(objs->surface);
-	if(objs->compositor)
-		wl_compositor_destroy(objs->compositor);
-	if(objs->registry)
-		wl_registry_destroy(objs->registry);
-	if(objs->display)
-		wl_display_disconnect(objs->display);
+	wl_keyboard_destroy(objs->inputs.keyboard.kbd);
+
+//  free (objs->inputs.keyboard.pressed.data);
+//  free (objs->inputs.keyboard.pressed.valid);
+
+	wl_pointer_destroy(objs->inputs.mouse.pointer);
+	wl_seat_destroy(objs->inputs.seat);
+	wl_shm_destroy(objs->shm);
+	zxdg_toplevel_v6_destroy(objs->top);
+	zxdg_surface_v6_destroy(objs->shell_surface);
+	zxdg_shell_v6_destroy(objs->shell);
+	wl_surface_destroy(objs->surface);
+	wl_compositor_destroy(objs->compositor);
+	wl_registry_destroy(objs->registry);
+	wl_display_disconnect(objs->display);
 }
 
-static void buffer_release_cb(void *data, struct wl_buffer *buf) {
-	(void) buf;
-	struct buffer *b = data;
-	ThreadSignal_Signal(&b->used);
-}
-
-static const struct wl_buffer_listener buffer_listener = { buffer_release_cb };
-
-struct buffer *wayland_create_double_buffer(struct wl_shm *shm, int width,
-		int height) {
-	size_t size = (width * height * 4) * 2;
-	int fd = shm_open("/wayland_frame_buffer",
-	O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-
-	ftruncate(fd, size);
-
-	void *raw = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-	if (raw == MAP_FAILED) {
-		perror("Could not map file to memory.\n");
-		return MAP_FAILED;
-	}
-
-	struct buffer *buffer = calloc(1, sizeof(struct buffer));
-	buffer->width = width;
-	buffer->height = height;
-	ThreadSignal_Init(&buffer->used);
-
-	struct wl_shm_pool * pool = wl_shm_create_pool(shm, fd, size);
-
-	buffer->bufs[0].wl_buffer = wl_shm_pool_create_buffer(pool, 0, width, height,
-			width * 4, WL_SHM_FORMAT_ARGB8888);
-	if (buffer->bufs[0].wl_buffer == NULL)
-		return NULL;
-	buffer->bufs[0].pixels = raw;
-	wl_buffer_add_listener(buffer->bufs[0].wl_buffer, &buffer_listener,
-			buffer);
-
-	buffer->bufs[1].wl_buffer = wl_shm_pool_create_buffer(pool, 4 * width * height,
-			width, height, width * 4, WL_SHM_FORMAT_ARGB8888);
-	if (buffer->bufs[1].wl_buffer == NULL)
-		return NULL;
-	buffer->bufs[1].pixels = ((uint32_t*) raw) + width * height;
-	wl_buffer_add_listener(buffer->bufs[1].wl_buffer, &buffer_listener,
-			buffer);
-
-	buffer->idx = 0;
-
-	return buffer;
-}
 
 void ref_display(struct wl_surface *surface, struct wl_buffer *buffer,
 		int width, int height) {

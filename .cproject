@@ -76,49 +76,59 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/3rd/gpinyin/include}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1878618458" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="WITH_TEXT_BIDI=1"/>
-									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="LINUX"/>
+									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
+									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
+									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
+									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
+									<listOptionValue builtIn="false" value="HAS_STDIO"/>
+									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
+									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="WITH_EVENT_RECORDER_PLAYER=1"/>
 									<listOptionValue builtIn="false" value="WITH_ASSET_LOADER"/>
 									<listOptionValue builtIn="false" value="WITH_FS_RES"/>
-									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
-									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
 									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
 									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
 									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
-									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
-									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
-									<listOptionValue builtIn="false" value="HAS_STDIO"/>
-									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
 									<listOptionValue builtIn="false" value="WITH_IME_PINYIN"/>
-									<listOptionValue builtIn="false" value="WITH_NANOVG_AGGE"/>
 									<listOptionValue builtIn="false" value="WITH_STB_FONT"/>
-									<listOptionValue builtIn="false" value="WITH_FB_BGRA8888"/>
+									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
+									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
+									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GL"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GLES2"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GPU"/>
+									<listOptionValue builtIn="false" value="WL_EGL_PLATFORM"/>
+									<listOptionValue builtIn="false" value="NANOVG_GLES2"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.2043887605" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input"/>
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1636657886" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs.1622691872" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="WITH_TEXT_BIDI=1"/>
 									<listOptionValue builtIn="false" value="LINUX"/>
+									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
+									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
+									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
+									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
+									<listOptionValue builtIn="false" value="HAS_STDIO"/>
+									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
 									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="WITH_EVENT_RECORDER_PLAYER=1"/>
 									<listOptionValue builtIn="false" value="WITH_ASSET_LOADER"/>
 									<listOptionValue builtIn="false" value="WITH_FS_RES"/>
-									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
-									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
 									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
 									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
 									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
-									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
-									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
-									<listOptionValue builtIn="false" value="HAS_STDIO"/>
-									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
 									<listOptionValue builtIn="false" value="WITH_IME_PINYIN"/>
-									<listOptionValue builtIn="false" value="WITH_NANOVG_AGGE"/>
 									<listOptionValue builtIn="false" value="WITH_STB_FONT"/>
-									<listOptionValue builtIn="false" value="WITH_FB_BGRA8888"/>
+									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
+									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
+									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GL"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GLES2"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GPU"/>
+									<listOptionValue builtIn="false" value="WL_EGL_PLATFORM"/>
+									<listOptionValue builtIn="false" value="NANOVG_GLES2"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.1557292302" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
@@ -135,7 +145,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/3rd/nanovg/gl}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/3rd/gpinyin/include}&quot;"/>
 								</option>
-								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.systempaths.148318105" name="Include system paths (-isystem)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.systempaths" useByScannerDiscovery="true" valueType="includePath"/>
+								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.systempaths.148318105" name="Include system paths (-isystem)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.systempaths" useByScannerDiscovery="true"/>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input.1433207185" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.input"/>
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker.976839641" name="GNU ARM Cross C Linker" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.linker">
@@ -148,6 +158,8 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.396460896" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="fribidi"/>
+									<listOptionValue builtIn="false" value="GLESv2"/>
+									<listOptionValue builtIn="false" value="EGL"/>
 									<listOptionValue builtIn="false" value="dl"/>
 									<listOptionValue builtIn="false" value="rt"/>
 									<listOptionValue builtIn="false" value="xkbcommon"/>
@@ -175,7 +187,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/vgcanvas/vgcanvas_nanovg_soft.c|src/native_window/native_window_raw.c|awtk-wayland/no_gl|src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -233,32 +245,37 @@
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.target.other.1325086148" name="Other target flags" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.target.other" useByScannerDiscovery="true" value="--sysroot=&quot;C:\Users\zjm09\Documents\work\stm32mp1\sysroot\stm32mp1&quot;" valueType="string"/>
 							<option id="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.PIC.316534672" name="Position independent code (-fPIC)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.optimization.PIC" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform.1734122419" isAbstract="false" osList="all" superClass="ilg.gnuarmeclipse.managedbuild.cross.targetPlatform"/>
-							<builder buildPath="${workspace_loc:/awtk-lib}/Release" id="ilg.gnuarmeclipse.managedbuild.cross.builder.609215885" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
+							<builder buildPath="${workspace_loc:/awtk-lib}/Release" id="ilg.gnuarmeclipse.managedbuild.cross.builder.609215885" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnuarmeclipse.managedbuild.cross.builder"/>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.1787926514" name="GNU ARM Cross Assembler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor.768846761" name="Use preprocessor" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1813447463" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.268614979" name="GNU ARM Cross C Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.1304234065" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="WITH_TEXT_BIDI=1"/>
-									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="LINUX"/>
+									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
+									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
+									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
+									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
+									<listOptionValue builtIn="false" value="HAS_STDIO"/>
+									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
+									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="WITH_EVENT_RECORDER_PLAYER=1"/>
 									<listOptionValue builtIn="false" value="WITH_ASSET_LOADER"/>
 									<listOptionValue builtIn="false" value="WITH_FS_RES"/>
-									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
-									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
 									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
 									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
 									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
-									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
-									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
-									<listOptionValue builtIn="false" value="HAS_STDIO"/>
-									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
 									<listOptionValue builtIn="false" value="WITH_IME_PINYIN"/>
-									<listOptionValue builtIn="false" value="WITH_NANOVG_AGGE"/>
 									<listOptionValue builtIn="false" value="WITH_STB_FONT"/>
-									<listOptionValue builtIn="false" value="WITH_FB_BGRA8888"/>
+									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
+									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
+									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GL"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GLES2"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GPU"/>
+									<listOptionValue builtIn="false" value="WL_EGL_PLATFORM"/>
+									<listOptionValue builtIn="false" value="NANOVG_GLES2"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths.1310982835" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
@@ -279,25 +296,30 @@
 							</tool>
 							<tool id="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler.1416754074" name="GNU ARM Cross C++ Compiler" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.cpp.compiler">
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs.229174453" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs" useByScannerDiscovery="true" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="WITH_TEXT_BIDI=1"/>
-									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="LINUX"/>
+									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
+									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
+									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
+									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
+									<listOptionValue builtIn="false" value="HAS_STDIO"/>
+									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
+									<listOptionValue builtIn="false" value="WITH_DATA_READER_WRITER=1"/>
 									<listOptionValue builtIn="false" value="WITH_EVENT_RECORDER_PLAYER=1"/>
 									<listOptionValue builtIn="false" value="WITH_ASSET_LOADER"/>
 									<listOptionValue builtIn="false" value="WITH_FS_RES"/>
-									<listOptionValue builtIn="false" value="STBTT_STATIC"/>
-									<listOptionValue builtIn="false" value="STB_IMAGE_STATIC"/>
 									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
 									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
 									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
-									<listOptionValue builtIn="false" value="HAS_STD_MALLOC"/>
-									<listOptionValue builtIn="false" value="HAVE_STDIO_H"/>
-									<listOptionValue builtIn="false" value="HAS_STDIO"/>
-									<listOptionValue builtIn="false" value="HAS_PTHREAD"/>
 									<listOptionValue builtIn="false" value="WITH_IME_PINYIN"/>
-									<listOptionValue builtIn="false" value="WITH_NANOVG_AGGE"/>
 									<listOptionValue builtIn="false" value="WITH_STB_FONT"/>
-									<listOptionValue builtIn="false" value="WITH_FB_BGRA8888"/>
+									<listOptionValue builtIn="false" value="WITH_STB_IMAGE"/>
+									<listOptionValue builtIn="false" value="WITH_VGCANVAS"/>
+									<listOptionValue builtIn="false" value="WITH_UNICODE_BREAK"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GL"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GLES2"/>
+									<listOptionValue builtIn="false" value="WITH_NANOVG_GPU"/>
+									<listOptionValue builtIn="false" value="WL_EGL_PLATFORM"/>
+									<listOptionValue builtIn="false" value="NANOVG_GLES2"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths.896420459" name="Include paths (-I)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.include.paths" useByScannerDiscovery="true" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/src}&quot;"/>
@@ -326,6 +348,8 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs.1549197361" name="Libraries (-l)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.linker.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="pthread"/>
 									<listOptionValue builtIn="false" value="fribidi"/>
+									<listOptionValue builtIn="false" value="GLESv2"/>
+									<listOptionValue builtIn="false" value="EGL"/>
 									<listOptionValue builtIn="false" value="dl"/>
 									<listOptionValue builtIn="false" value="rt"/>
 									<listOptionValue builtIn="false" value="xkbcommon"/>
@@ -353,7 +377,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|app|src/native_window/native_window_fb_gl.c|src/vgcanvas/vgcanvas_nanovg_gl.c|awtk-wayland/gl|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/vgcanvas/vgcanvas_nanovg_soft.c|src/native_window/native_window_raw.c|awtk-wayland/no_gl|src/lcd/lcd_sdl2.c|src/lcd/lcd_sdl2_mono.c|app|src/native_window/native_window_sdl.c|src/main_loop/main_loop_sdl.c|3rd/nanovg/agg|src/window_manager/window_manager_simple.c|src/vgcanvas/vgcanvas_null.c|src/platforms/tos|src/platforms/rtt|src/platforms/raw|src/platforms/common|src/platforms/cmsis_os" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

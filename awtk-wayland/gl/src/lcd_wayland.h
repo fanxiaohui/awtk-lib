@@ -8,8 +8,8 @@
 #ifndef UI_AWTK_WAYLAND_LCD_WAYLAND_H_
 #define UI_AWTK_WAYLAND_LCD_WAYLAND_H_
 
-#include "pthread_signal.h"
-#include "wayland_tools.h"
+#include "../../comm/pthread_signal.h"
+#include "../../comm/wayland_tools.h"
 #include "tkc/mem.h"
 #include "base/lcd.h"
 #include "lcd/lcd_mem_bgr565.h"

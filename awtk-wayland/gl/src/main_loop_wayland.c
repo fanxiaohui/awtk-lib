@@ -45,12 +45,16 @@ void Init_GLES(lcd_wayland_t *lw)
 		};
   static const EGLint s_configAttribs[] =
   {
-		  EGL_RED_SIZE,     1,
-		  EGL_GREEN_SIZE,   1,
-		  EGL_BLUE_SIZE,    1,
-		  EGL_ALPHA_SIZE,   1,
-		  EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-		  EGL_NONE,
+		    EGL_SAMPLES,      0,
+		    EGL_RED_SIZE,     8,
+		    EGL_GREEN_SIZE,   8,
+		    EGL_BLUE_SIZE,    8,
+		    EGL_ALPHA_SIZE,   EGL_DONT_CARE,
+		    EGL_STENCIL_SIZE, 8,
+		    EGL_DEPTH_SIZE,   0,
+		    EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+//		    EGL_MIN_SWAP_INTERVAL, 1,
+		    EGL_NONE,
   };
 
 //  lcd_wayland_t *lw = lcd->impl_data;
@@ -104,13 +108,14 @@ void Init_GLES(lcd_wayland_t *lw)
 
 static ret_t gles_swap_buffer(native_window_t* win) {
 
-//	uint64_t t = time_now_ms();
-//	static uint64_t old_t;
+//	uint64_t inerval;
+//	uint64_t now = time_now_ms();
+//	static uint64_t last;
 //
-//	t = t - old_t;
-//	old_t = t;
+//	inerval = now - last;
+//	last = now;
 //
-//	printf("fps:%0.2f\n",1000/(t/1000.0));
+//	printf("fps:%.2f\n",1000.0/inerval);
 
 	//wl_surface_set_opaque_region(lw->objs.surface, NULL);
 

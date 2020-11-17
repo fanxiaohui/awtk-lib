@@ -61,65 +61,54 @@ static ret_t wayland_begin_frame(lcd_t* lcd, rect_t* dirty_rect) {
 	return RET_OK;
 }
 
-static ret_t input_dispatch_to_main_loop(void* ctx, const event_queue_req_t* e) {
-	main_loop_queue_event((main_loop_t*)ctx, e);
-	return RET_OK;
+static void buffer_release_cb(void *data, struct wl_buffer *buf) {
+	(void) buf;
+	struct buffer *b = data;
+	ThreadSignal_Signal(&b->used);
 }
 
-extern int32_t map_key(uint8_t code);
-static void key_input_dispatch(int state,int key)
-{
-	event_queue_req_t req;
+static const struct wl_buffer_listener buffer_listener = { buffer_release_cb };
 
-    req.event.type = (state == WL_KEYBOARD_KEY_STATE_PRESSED) ? EVT_KEY_DOWN : EVT_KEY_UP;
-    req.key_event.key = map_key(key);
+struct buffer *wayland_create_double_buffer(struct wl_shm *shm, int width,
+		int height) {
+	size_t size = (width * height * 4) * 2;
+	int fd = shm_open("/wayland_frame_buffer",
+	O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
 
-    input_dispatch_to_main_loop(main_loop(), &(req));
+	ftruncate(fd, size);
 
-    req.event.type = EVT_NONE;
-
-    if(state == WL_KEYBOARD_KEY_STATE_PRESSED){
-    	__repeat_state = repeat_key_pressed;
-    	key_value = key;
-    }else{
-    	__repeat_state = repeat_key_released;
-    }
-
-}
-
-static void mouse_point_dispatch(int state,int button, int x,int y)
-{
-	pointer_event_t event;
-	widget_t* widget = main_loop()->wm;
-	static int __x,__y;
-
-	if(x > 0){
-		__x = x;
+	void *raw = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	if (raw == MAP_FAILED) {
+		perror("Could not map file to memory.\n");
+		return MAP_FAILED;
 	}
 
-	if(y > 0){
-		__y = y;
-	}
+	struct buffer *buffer = calloc(1, sizeof(struct buffer));
+	buffer->width = width;
+	buffer->height = height;
+	ThreadSignal_Init(&buffer->used);
 
-	switch(state){
-		case WL_POINTER_BUTTON_STATE_PRESSED:
-			pointer_event_init(&event, EVT_POINTER_DOWN, widget, __x, __y);
-			event.button = button;
-			event.pressed = 1;
-			break;
-		case WL_POINTER_BUTTON_STATE_RELEASED:
-			pointer_event_init(&event, EVT_POINTER_UP, widget, __x, __y);
-			event.button = button;
-			event.pressed = 0;
-			break;
-		default:
-			pointer_event_init(&event, EVT_POINTER_MOVE, widget, __x, __y);
-			event.button = button;
-			event.pressed = 0;
-			break;
-	}
+	struct wl_shm_pool * pool = wl_shm_create_pool(shm, fd, size);
 
-    input_dispatch_to_main_loop(main_loop(), (event_queue_req_t *)&event);
+	buffer->bufs[0].wl_buffer = wl_shm_pool_create_buffer(pool, 0, width, height,
+			width * 4, WL_SHM_FORMAT_ARGB8888);
+	if (buffer->bufs[0].wl_buffer == NULL)
+		return NULL;
+	buffer->bufs[0].pixels = raw;
+	wl_buffer_add_listener(buffer->bufs[0].wl_buffer, &buffer_listener,
+			buffer);
+
+	buffer->bufs[1].wl_buffer = wl_shm_pool_create_buffer(pool, 4 * width * height,
+			width, height, width * 4, WL_SHM_FORMAT_ARGB8888);
+	if (buffer->bufs[1].wl_buffer == NULL)
+		return NULL;
+	buffer->bufs[1].pixels = ((uint32_t*) raw) + width * height;
+	wl_buffer_add_listener(buffer->bufs[1].wl_buffer, &buffer_listener,
+			buffer);
+
+	buffer->idx = 0;
+
+	return buffer;
 }
 
 static lcd_t* lcd_linux_create_flushable(lcd_wayland_t *lw)
@@ -146,24 +135,21 @@ static lcd_t* lcd_linux_create_flushable(lcd_wayland_t *lw)
 //	lw->current = buffer->bufs;
 	lw->impl_data = buffer;
 
-	lcd_t *lcd = lcd_mem_bgra8888_create_double_fb(width, height, online_fb, offline_fb);
+	lcd_t *lcd = lcd_mem_rgba8888_create_double_fb(width, height, online_fb, offline_fb);
 
 	if(lcd != NULL) {
 		lcd->impl_data = lw;
 		lcd->sync = wayland_sync;
 		lcd->flush = wayland_flush;
 		lcd->begin_frame = wayland_begin_frame;
-//		lcd->swap = wayland_lcd_swap;
+		lcd->swap = wayland_lcd_swap;
 		lcd_mem_set_line_length(lcd, line_length);
 	}
-
-	lw->objs.inputs.keyboard.kb_xcb = key_input_dispatch;
-	lw->objs.inputs.mouse.point_xcb = mouse_point_dispatch;
-	lw->objs.inputs.touch.point_xcb = mouse_point_dispatch;
 
 	return lcd;
 }
 
+#if 0
 static void *kb_repeat(struct wayland_data *objs)
 {
 	static uint32_t repeat_count = 0;
@@ -200,6 +186,9 @@ static void *kb_repeat(struct wayland_data *objs)
 
 	return NULL;
 }
+#endif
+
+void setup_input_cb(struct input_bundle *input);
 
 lcd_wayland_t *lcd_wayland_create(void)
 {
@@ -209,14 +198,12 @@ lcd_wayland_t *lcd_wayland_create(void)
 		return NULL;
 	}
 
-	tk_thread_t* thread = tk_thread_create(kb_repeat, NULL);
-	if (thread != NULL) {
-		tk_thread_start(thread);
-	}
+//	tk_thread_t* thread = tk_thread_create(kb_repeat, NULL);
+//	if (thread != NULL) {
+//		tk_thread_start(thread);
+//	}
 
-	lw->objs.inputs.keyboard.kb_xcb = key_input_dispatch;
-	lw->objs.inputs.mouse.point_xcb = mouse_point_dispatch;
-	lw->objs.inputs.touch.point_xcb = mouse_point_dispatch;
+	setup_input_cb(&lw->objs.inputs);
 
 	{
 		struct wayland_data *objs = &lw->objs;

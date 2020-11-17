@@ -1,7 +1,7 @@
 /*
  * wayland_tools.h
  *
- *  Created on: 2019Äê9ÔÂ23ÈÕ
+ *  Created on: 2019ï¿½ï¿½9ï¿½ï¿½23ï¿½ï¿½
  *      Author: zjm09
  */
 
@@ -57,7 +57,6 @@ struct touch{
 	void (*point_xcb)(int,int,int,int);
 };
 
-
 struct input_bundle
 {
   struct keyboard keyboard;
@@ -104,9 +103,11 @@ struct double_buffer_list
   struct double_buffer_list *next;
 };
 
-struct buffers{
-	  struct wl_buffer *wl_buffer;
-	  uint32_t *pixels;
+struct buffers
+{
+  // for gl
+  struct wl_buffer *wl_buffer;
+  uint32_t *pixels;
 };
 
 struct buffer
@@ -138,6 +139,5 @@ WAYLAND_SETUP_ERR setup_wayland (struct wayland_data *objs,int fullscreen);
 void destroy_wayland_data (struct wayland_data *objs);
 void *wayland_create_buffer(struct wl_shm *shm,int width,int height,int num_of_buffers);
 void ref_display(struct wl_surface *surface,struct wl_buffer *buffer,int width,int height);
-struct buffer *wayland_create_double_buffer(struct wl_shm *shm,int width,int height);
 
 #endif /* WAYLAND_TOOLS_H_ */
