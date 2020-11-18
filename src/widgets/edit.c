@@ -1745,21 +1745,21 @@ ret_t edit_pre_input_with_sep(widget_t* widget, uint32_t key, char sep) {
 
   text_edit_get_state(edit->model, &state);
   if (state.select_start < state.select_end) {
-    uint32_t i = 0;
-    wchar_t* s = text->str + state.select_start;
-    wchar_t* d = text->str + state.select_start;
-
-    for (i = state.select_start; i < state.select_end; i++, s++) {
-      if (*s == sep) {
-        *d++ = sep;
-      }
-    }
-
-    for (; i < text->size; i++) {
-      *d++ = *s++;
-    }
-    text->size = d - text->str;
-    *d = 0;
+//    uint32_t i = 0;
+//    wchar_t* s = text->str + state.select_start;
+//    wchar_t* d = text->str + state.select_start;
+//
+//    for (i = state.select_start; i < state.select_end; i++, s++) {
+//      if (*s == (wchar_t)sep) {
+//        *d++ = sep;
+//      }
+//    }
+//
+//    for (; i < text->size; i++) {
+//      *d++ = *s++;
+//    }
+//    text->size = d - text->str;
+//    *d = 0;
 
     text_edit_unselect(edit->model);
     text_edit_set_cursor(edit->model, state.select_start);
